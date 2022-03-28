@@ -35,17 +35,24 @@ public class Main {
         final DecimalFormat df = new DecimalFormat("#.##");
         List<Double> result = new ArrayList<>();
 
+        //Starts in 1 cause the position 0 has the value of the size of list with the response,
+        //  but we don't need it  in Java
         for (int i = 1; i < y.size(); i++){
 
             double sum = 0.00;
 
-            for (int j = i + 1; j < i + 1 + y.get(i); j++){
+            // i will have the lenght of the next array
+            // j will run through i + 1 + the value in i
+            //   In case we have i = 1 and the value in the index 1 is 3, we will read the indexes from 2 to 4
+            for (int j = i + 1; j <= i + y.get(i); j++){
 
+                //TODO: debug
                 sum += (double) (y.get(i)+1) / (1 + y.get(j));
             }
 
             i += y.get(i);
 
+            //Saves with only 2 decimals houses
             result.add( Math.floor(sum * 100) / 100);
         }
 
